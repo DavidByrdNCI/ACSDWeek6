@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DisplayWeather from "./DisplayWeather.js"
-import FindWeather from "./FindWeather.js";
+import { FindWeather } from "./FindWeather.js";
 
 function WeatherSearch(props) {
     const [weather, setWeather] = useState({});
@@ -12,22 +12,22 @@ function WeatherSearch(props) {
         setQuery(e.target.value);
     }
 
-    async function searchWeather(e) {
-        e.preventDefault();
-        var response = <FindWeather query={query} />
+    async function searchWeather() {
+        console.log("SearchWeather called");
+        var response = await FindWeather({query: query});
+        console.log(query);
         setWeather(response);
-        console.log(response)
+        console.log("the Weava:", response)
         setIsInit(false);
     }
 
 
-    if (weather.length > 0) {
+    if (Object.keys(weather).length !== 0) {
         return (
             <div>
                 <input value={query} onChange={handleSearchQuery} />
                 <button onClick={searchWeather}>Search</button>
-                {/* <DisplayWeather weather={weather} />  */}
-                {weather}
+                <DisplayWeather weather={weather} />
             </div>
 
         );

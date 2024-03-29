@@ -11,13 +11,13 @@ function NavBar() {
                         Your Location
                     </Link>
                 </div>
-        {/*
+        
                 <div className="navbar-option">
                     <Link to="/search" className="navbar-option-link"> 
                         Weather Search
                     </Link>
                 </div>
-        */}
+    
             </div>
         </nav>
     );
